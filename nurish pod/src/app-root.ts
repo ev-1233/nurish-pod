@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import { APP_ROUTES, PageRoute } from './config';
+import { APP_ROUTES, type PageRoute } from './config';
 import './components/hero-banner';
 
 import '@material/web/navigationdrawer/navigation-drawer.js';
