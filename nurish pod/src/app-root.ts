@@ -1,9 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { APP_ROUTES, type PageRoute } from './config';
-import './components/hero-banner';
+import './components/hero-banner.ts';
 
-import '@material/web/navigationdrawer/navigation-drawer.js';
 import '@material/web/list/list.js';
 import '@material/web/list/list-item.js';
 import '@material/web/icon/icon.js';
@@ -85,7 +84,7 @@ export class AppRoot extends LitElement {
           <svg viewBox="0 0 24 24" fill="#6750A4">
             <path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/>
           </svg>
-          <span class="brand-name">LitApp</span>
+          <span class="brand-name">nurish pod</span>
         </div>
 
         <md-list>
@@ -123,11 +122,11 @@ export class AppRoot extends LitElement {
   private renderPageView(pageId: string) {
     switch (pageId) {
       case 'home':
-        return html`<h2>Home Space</h2><p>Your modular landing block content goes here.</p>`;
+        return html`<h2>Home</h2><p>Hero baner plus markdown</p>`;
       case 'analytics':
-        return html`<h2>Analytics Space</h2><p>Data visualization frameworks can be populated here.</p>`;
+        return html`<h2>Menu</h2><p>Basic menu</p>`;
       case 'settings':
-        return html`<h2>Settings Space</h2><p>User configuration forms and controls belong here.</p>`;
+        return html`<h2>Map page</h2><p>Add map compante</p>`;
       default:
         return html`<h2>Page Not Found</h2>`;
     }

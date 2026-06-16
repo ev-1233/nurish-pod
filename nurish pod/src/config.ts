@@ -12,12 +12,12 @@ export const APP_ROUTES: PageRoute[] = [
     id: 'home',
     label: 'Home',
     icon: 'home',
-    title: 'Welcome to the Platform',
-    heroImage: 'linear-gradient(135deg, #6750A4, #EADDFF)',
+    title: 'NURISH POD',
+    heroImage: 'linear-gradient(135deg,rgb(126, 80, 164), #EADDFF)',
     tag: 'home-page'
   },
   {
-    id: 'analytics',
+    id: 'Menu',
     label: 'Analytics',
     icon: 'bar_chart',
     title: 'Performance Insights',
@@ -25,11 +25,11 @@ export const APP_ROUTES: PageRoute[] = [
     tag: 'analytics-page'
   },
   {
-    id: 'settings',
-    label: 'Settings',
+    id: 'Map',
+    label: 'Find Us',
     icon: 'settings',
-    title: 'Account Settings',
+    title: 'See us on the Map',
     heroImage: 'linear-gradient(135deg, #00639B, #C2E7FF)',
-    tag: 'settings-page'
+    tag: 'Map-page'
   }
 ];
