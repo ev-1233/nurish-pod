@@ -18,11 +18,11 @@ export const APP_ROUTES: PageRoute[] = [
   },
   {
     id: 'Menu',
-    label: 'Analytics',
+    label: 'menu',
     icon: 'bar_chart',
-    title: 'Performance Insights',
+    title: 'See whats cooking',
     heroImage: 'linear-gradient(135deg, #381E72, #625B71)',
-    tag: 'analytics-page'
+    tag: 'menu-page'
   },
   {
     id: 'Map',

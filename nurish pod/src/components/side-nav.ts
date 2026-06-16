@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { APP_ROUTES } from '../config';
 
 
-import brandLogo from '../assets/chiken chef.svg'; 
+import brandLogo from '../assets/chiken-chef.svg'; 
 
 import '@material/web/list/list.js';
 import '@material/web/list/list-item.js';
@@ -32,7 +32,7 @@ export class SideNav extends LitElement {
       gap: 12px;
     }
 
-    /* 2. Changed from 'svg' to 'img' to keep your exact 40x40 sizing */
+    
     .logo-container img {
       width: 40px;
       height: 40px;
@@ -70,7 +70,7 @@ export class SideNav extends LitElement {
       <aside class="drawer-container">
         <div class="logo-container">
           <img src="${brandLogo}" alt="App Logo" />
-          <span class="brand-name">LitApp</span>
+          <span class="brand-name">Nurish pod</span>
         </div>
 
         <md-list>

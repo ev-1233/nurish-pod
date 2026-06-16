@@ -1,11 +1,15 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { APP_ROUTES, type PageRoute } from './config';
-import './components/hero-banner.ts';
 
-import '@material/web/list/list.js';
-import '@material/web/list/list-item.js';
-import '@material/web/icon/icon.js';
+// Import Shared Components (No .ts extension for cleaner Vite builds)
+import './components/hero-banner';
+import './components/side-nav';
+
+// Import Page Components
+import './pages/home-page';
+import './pages/menu-page';
+import './pages/map-page';
 
 @customElement('app-root')
 export class AppRoot extends LitElement {
@@ -20,31 +24,7 @@ export class AppRoot extends LitElement {
       font-family: 'Roboto', sans-serif;
     }
 
-    /* Sidebar Layout */
-    md-navigation-drawer {
-      height: 100%;
-      border-right: 1px solid #e7e0ec;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      padding: 24px;
-      gap: 12px;
-    }
-
-    .logo-container svg {
-      width: 40px;
-      height: 40px;
-    }
-
-    .brand-name {
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: #1d1b20;
-    }
-
-    /* Main Content Area */
+    /* Main Content Layout Wrapper */
     .main-wrapper {
       flex: 1;
       display: flex;
@@ -67,6 +47,7 @@ export class AppRoot extends LitElement {
       min-height: 300px;
       border: 1px solid #e7e0ec;
       color: #49454f;
+      margin-top: 24px;
     }
   `;
 
@@ -75,31 +56,19 @@ export class AppRoot extends LitElement {
     return APP_ROUTES.find(route => route.id === this.activePageId) || APP_ROUTES[0];
   }
 
+  // Listens to the custom navigation events coming out of side-nav
+  private _onPageChanged(e: CustomEvent<{ pageId: string }>) {
+    this.activePageId = e.detail.pageId;
+  }
+
   render() {
     const current = this.currentPage;
 
     return html`
-      <md-navigation-drawer opened>
-        <div class="logo-container">
-          <svg viewBox="0 0 24 24" fill="#6750A4">
-            <path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/>
-          </svg>
-          <span class="brand-name">nurish pod</span>
-        </div>
-
-        <md-list>
-          ${APP_ROUTES.map(route => html`
-            <md-list-item 
-              type="button"
-              ?selected=${this.activePageId === route.id}
-              @click=${() => this.activePageId = route.id}
-            >
-              <md-icon slot="start">${route.icon}</md-icon>
-              ${route.label}
-            </md-list-item>
-          `)}
-        </md-list>
-      </md-navigation-drawer>
+      <side-nav 
+        .activePageId=${this.activePageId}
+        @page-changed=${this._onPageChanged}>
+      </side-nav>
 
       <div class="main-wrapper">
         <main>
@@ -109,7 +78,7 @@ export class AppRoot extends LitElement {
           </hero-banner>
 
           <div class="page-content">
-            ${this.renderPageView(current.id)}
+            ${this.renderDynamicPage(current.tag)}
           </div>
         </main>
       </div>
@@ -117,18 +86,18 @@ export class AppRoot extends LitElement {
   }
 
   /**
-   * Evaluates which blank view structure to return based on the active ID
+   * Evaluates which page component element to mount based on the tag property inside config.ts
    */
-  private renderPageView(pageId: string) {
-    switch (pageId) {
-      case 'home':
-        return html`<h2>Home</h2><p>Hero baner plus markdown</p>`;
-      case 'analytics':
-        return html`<h2>Menu</h2><p>Basic menu</p>`;
-      case 'settings':
-        return html`<h2>Map page</h2><p>Add map compante</p>`;
+  private renderDynamicPage(tag: string) {
+    switch (tag) {
+      case 'home-page':
+        return html`<home-page></home-page>`;
+      case 'menu-page':
+        return html`<menu-page></menu-page>`;
+      case 'map-page':
+        return html`<map-page></map-page>`;
       default:
-        return html`<h2>Page Not Found</h2>`;
+        return html`<h2>Page Not Found</h2><p>The requested component view is missing.</p>`;
     }
   }
 }
