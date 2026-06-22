@@ -5,8 +5,8 @@ import { marked } from 'marked';
 
 import '@googlemaps/extended-component-library/overlay_layout.js';
 
-@customElement('home-page')
-export class HomePage extends LitElement {
+@customElement('map-page')
+export class MapPage extends LitElement {
   // 1. Add state to hold the converted HTML
   @state()
   private markdownHtml = '<p>Loading markdown...</p>';
@@ -36,7 +36,7 @@ export class HomePage extends LitElement {
   // 3. Fetch and parse the file
   async loadMarkdown() {
     try {
-      const response = await fetch('/src/docs/home-page.md'); 
+      const response = await fetch('/src/docs/map-page.md'); 
       
       if (!response.ok) throw new Error('File not found');
       
