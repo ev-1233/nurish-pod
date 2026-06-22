@@ -19,7 +19,7 @@ export const APP_ROUTES: PageRoute[] = [
   {
     id: 'Menu',
     label: 'menu',
-    icon: 'bar_chart',
+    icon: 'restaurant',
     title: 'See whats cooking',
     heroImage: 'linear-gradient(135deg, #381E72, #625B71)',
     tag: 'menu-page'
@@ -27,7 +27,7 @@ export const APP_ROUTES: PageRoute[] = [
   {
     id: 'Map',
     label: 'Find Us',
-    icon: 'settings',
+    icon: 'location_on',
     title: 'See us on the Map',
     heroImage: 'linear-gradient(135deg, #00639B, #C2E7FF)',
     tag: 'Map-page'
