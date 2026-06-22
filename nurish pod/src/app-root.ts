@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { APP_ROUTES, type PageRoute } from './config';
 
-// Import Shared Components (No .ts extension for cleaner Vite builds)
+// Import Shared Components
 import './components/hero-banner';
 import './components/side-nav';
 
@@ -73,7 +73,7 @@ export class AppRoot extends LitElement {
       <div class="main-wrapper">
         <main>
           <hero-banner 
-            .title=${current.title} 
+            .title=${current.label} 
             .background=${current.heroImage}>
           </hero-banner>
 
@@ -85,9 +85,8 @@ export class AppRoot extends LitElement {
     `;
   }
 
-  /**
-   * Evaluates which page component element to mount based on the tag property inside config.ts
-   */
+  //Evaluates which page component element to mount based on the tag property inside config.ts
+
   private renderDynamicPage(tag: string) {
     switch (tag) {
       case 'home-page':

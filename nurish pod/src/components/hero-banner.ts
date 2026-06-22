@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-// 1. Import your banner SVG file from the assets folder
 import bannerSvg from '../assets/banaer-add.svg'; 
 
 @customElement('hero-banner')
@@ -9,47 +8,44 @@ export class HeroBanner extends LitElement {
   @property({ type: String }) title = '';
 
   static styles = css`
-    .banner-container {
-      position: relative;
+    :host {
+      display: block;
       width: 100%;
-      height: 200px; /* Adjust height to fit your design */
+    }
+
+    /* Clean, modern standalone page heading style */
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1d1b20; /* Dark material text color */
+      margin: 0 0 16px 0; /* Pushes the banner image down slightly */
+      font-family: 'Roboto', sans-serif;
+      text-transform: capitalize; /* Forces consistent capitalization */
+    }
+
+    /* Dedicated frame strictly for the SVG aspect scaling */
+    .banner-frame {
+      width: 100%;
+      aspect-ratio: 21334 / 9000; 
       border-radius: 16px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: 0 32px;
-      box-sizing: border-box;
+      background-color: transparent;
     }
 
-    /* 2. Style the SVG image to span across the background */
     .banner-background {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Stretches and crops perfectly without distortion */
-      z-index: 1;
-    }
-
-    /* 3. Style the overlay text so it stands out over the graphic */
-    .banner-title {
-      position: relative;
-      z-index: 2;
-      color: #ffffff;
-      font-size: 2.25rem;
-      font-weight: 700;
-      margin: 0;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Makes text readable over any art */
+      object-fit: contain;
+      display: block;
     }
   `;
 
   render() {
     return html`
-      <div class="banner-container">
-        <img class="banner-background" src="${bannerSvg}" alt="Banner Background" />
-        
-        <h1 class="banner-title">${this.title}</h1>
+      <h1 class="page-title">${this.title}</h1>
+      
+      <div class="banner-frame">
+        <img class="banner-background" src="${bannerSvg}" alt="Banner Art" />
       </div>
     `;
   }
