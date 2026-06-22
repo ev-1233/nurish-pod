@@ -30,6 +30,6 @@ export const APP_ROUTES: PageRoute[] = [
     icon: 'location_on',
     title: 'See us on the Map',
     heroImage: 'linear-gradient(135deg, #00639B, #C2E7FF)',
-    tag: 'Map-page'
+    tag: 'map-page'
   }
 ];

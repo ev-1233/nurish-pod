@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@googlemaps/extended-component-library": "^0.6.15",
     "lit": "^3.3.2"
   },
   "devDependencies": {
