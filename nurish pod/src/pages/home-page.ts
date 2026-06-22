@@ -18,12 +18,10 @@ export class HomePage extends LitElement {
       margin-top: 0; 
       color: #1d1b20; 
     }
-    /* Optional: Add some basic styling for your markdown area */
     .markdown-container {
       margin-top: 2rem;
       padding: 1rem;
-      background-color: #f8f9fa;
-      border-radius: 8px;
+      border-radius: 4px
     }
   `;
 
@@ -51,9 +49,6 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <h2>Home Workspace</h2>
-      <p>This is the separate, isolated Home page component.</p>
-      
       <div class="markdown-container">
         ${unsafeHTML(this.markdownHtml)}
       </div>
